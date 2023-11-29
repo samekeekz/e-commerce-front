@@ -2,7 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.cdnfonts.com/css/futura-std-4?styles=52567,52574,52581,52570,52583,52579,52565,52571,52573,52577');
+@layer base {
+  /* @import url('https://fonts.cdnfonts.com/css/futura-std-4?styles=52567,52574,52581,52570,52583,52579,52565,52571,52573,52577'); */
+}
+/* @import url('https://fonts.cdnfonts.com/css/futura-std-4'); */
+
 *,
 ::after,
 ::before {
@@ -12,7 +16,7 @@
 }
 
 :root {
-  font-family: 'Futura Std', sans-serif;
+  font-family: 'Futura', sans-serif;
 }
 
 .container {
@@ -20,10 +24,10 @@
   margin: 0 auto;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  column-gap: 20px;
+.dropdown-menu {
+  background: #fff;
+  box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.05);
+  transition: all linear 0.3s;
 }
 
 @media (min-width: 768px) {

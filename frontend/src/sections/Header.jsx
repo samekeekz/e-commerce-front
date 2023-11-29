@@ -1,14 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavBar from '../components/NavBar';
+import DropdownMenu from '../components/DropdownMenu';
 
 const Header = () => {
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
+
+  const handleMouseEnter = () => {
+    setDropdownVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    setDropdownVisible(false);
+  };
+
+  const items = [
+    'Menu 1',
+    'Menu 2',
+    'Menu 1',
+    'Menu 1',
+    'Menu 1',
+    'Menu 1',
+    'Menu 1',
+    'Menu 1',
+    'Menu 1',
+  ];
   return (
-    <header className="px-10 pt-6 pb-10 sticky top-0 left-0">
-      <div className="grid-container items-start">
+    <header className="px-10 pt-6 sticky top-0 left-0 border-b border-b-[#e5e7ed]">
+      <div className="grid grid-cols-[auto_minmax(340px,_600px)_auto] gap-5 items-start h-12">
         <NavBar />
-        <div className="relative max-w-[600px] min-w-[340px] mt-[-13px]">
-          <form>
-            <div className="absolute translate-y-[-50%] top-[50%] left-[0.75rem]">
+        <div className="relative mt-[-13px] col-span-1">
+          <form className="flex items-center border-[#e5e5e5] border-[1px] py-3 pl-10 pr-14">
+            <div className="absolute left-[0.75rem]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -27,11 +49,11 @@ const Header = () => {
             <input
               type="text"
               placeholder="Search"
-              className="w-full bg-white border-[#e5e5e5] border-[1px] py-3 pl-10 pr-14 placeholder:text-sm placeholder:text-[rgb(90, 92, 102)] placeholder:leading-[14px] focus-visible:outline-0 focus-visible:border-[#e5e5e5] transition-all duration-200 ease-linear	text-[#5a5c66] leading-5"
+              className="max-w-[600px] min-w-[340px] w-full bg-transparent placeholder:text-sm placeholder:text-[#5a5c66] placeholder:leading-[14px] focus-visible:outline-0 focus-visible:border-[#e5e5e5] transition-all duration-200 ease-linear	text-[#000c2d] leading-5"
             />
           </form>
         </div>
-        <div className="flex items-center gap-x-5">
+        <div className="flex items-center gap-x-5 col-auto justify-self-end">
           <div className="flex items-center">
             <svg
               className="text-[20px] mr-[10px]"
@@ -55,7 +77,7 @@ const Header = () => {
                 strokeWidth="1.2"
               ></path>
             </svg>
-            <button className="text-sm text-[#000c2d] font-Futura">Sign In / Register</button>
+            <button className="text-sm text-[#000c2d]">Sign In / Register</button>
           </div>
           <div className="flex items-center gap-x-5">
             <svg
@@ -99,6 +121,60 @@ const Header = () => {
             </svg>
           </div>
         </div>
+      </div>
+      <div>
+        <ul onMouseLeave={handleMouseLeave} className="flex flex-row flex-wrap mt-4">
+          <li className="relative group h-[30px]">
+            <a
+              onMouseEnter={handleMouseEnter}
+              href="/"
+              className="mt-1 mr-3 mb-5 duration-300 group/item"
+            >
+              <span className="text-sm">New In</span>
+            </a>
+          </li>
+          <li>
+            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
+              <span className="text-sm">Clothing</span>
+            </a>
+          </li>
+          <li>
+            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
+              <span className="text-sm">Coats & Jackets</span>
+            </a>
+          </li>
+          <li>
+            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
+              <span className="text-sm">Shoes</span>
+            </a>
+          </li>
+          <li>
+            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
+              <span className="text-sm">Lingerie & Loungewear</span>
+            </a>
+          </li>
+          <li>
+            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
+              <span className="text-sm">Bags</span>
+            </a>
+          </li>
+          <li>
+            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
+              <span className="text-sm">Accessories</span>
+            </a>
+          </li>
+          <li>
+            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
+              <span className="text-sm">Collections</span>
+            </a>
+          </li>
+          <li>
+            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
+              <span className="text-sm">Tommy Jeans</span>
+            </a>
+          </li>
+          {isDropdownVisible && <DropdownMenu items={items} />}
+        </ul>
       </div>
     </header>
   );

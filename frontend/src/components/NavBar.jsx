@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center col-auto">
       <a href="#" className="mr-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -30,17 +29,17 @@ const NavBar = () => {
       <nav>
         <ul className="flex items-center justify-start gap-x-5">
           <li>
-            <a to="/" className="font-bold text-[13px] text-[#000c2d]">
+            <a href="#" className="font-bold text-[13px] text-[#000c2d]">
               WOMEN
             </a>
           </li>
           <li>
-            <a to="/" className="font-bold text-[13px] text-[#000c2d]">
+            <a href="#" className="font-bold text-[13px] text-[#000c2d]">
               MEN
             </a>
           </li>
           <li>
-            <a to="/" className="font-bold text-[13px] text-[#000c2d]">
+            <a href="#" className="font-bold text-[13px] text-[#000c2d]">
               KIDS
             </a>
           </li>

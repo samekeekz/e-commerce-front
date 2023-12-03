@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
+  // const { lastVisitedPage } = useContext(LastVisitedPageContext);
+  // console.log(lastVisitedPage);
+  const [lastVisitedPage, setLastVisitedPage] = useState('');
+
   return (
     <div className="flex items-center col-auto">
-      <a href="#" className="mr-5">
+      <NavLink to={`/${lastVisitedPage}`} className="mr-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -25,23 +30,35 @@ const NavBar = () => {
             />
           </g>
         </svg>
-      </a>
+      </NavLink>
       <nav>
         <ul className="flex items-center justify-start gap-x-5">
           <li>
-            <a href="#" className="font-bold text-[13px] text-[#000c2d]">
+            <NavLink
+              to="/women"
+              onClick={() => setLastVisitedPage('women')}
+              className="font-bold text-[13px] text-[#000c2d]"
+            >
               WOMEN
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#" className="font-bold text-[13px] text-[#000c2d]">
+            <NavLink
+              to="/men"
+              onClick={() => setLastVisitedPage('men')}
+              className="font-bold text-[13px] text-[#000c2d]"
+            >
               MEN
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#" className="font-bold text-[13px] text-[#000c2d]">
+            <NavLink
+              to="/kids"
+              onClick={() => setLastVisitedPage('kids')}
+              className="font-bold text-[13px] text-[#000c2d]"
+            >
               KIDS
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>

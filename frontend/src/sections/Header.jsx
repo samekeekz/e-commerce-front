@@ -1,31 +1,51 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBar from '../components/NavBar';
 import DropdownMenu from '../components/DropdownMenu';
 
 const Header = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [categoriesData, setCategoriesData] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
 
-  const handleMouseEnter = () => {
-    setDropdownVisible(true);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://653c43ecd5d6790f5ec7e6e3.mockapi.io/products');
+        const data = await response.json();
+        setCategoriesData(data); // Assuming the API returns an array of categories with their subcategories
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // console.log(1);
+
+  const handleMouseEnter = event => {
+    let category = event.target.dataset.category;
+
+    if (!category) {
+      const elementWithDataCategory = event.target.closest('[data-category]');
+      if (elementWithDataCategory) {
+        category = elementWithDataCategory.dataset.category;
+      }
+    }
+
+    const subcategoryData = categoriesData.find(data => data.category === category);
+    if (subcategoryData) {
+      setSubcategories(subcategoryData.subcategories);
+      setDropdownVisible(true);
+    }
   };
 
   const handleMouseLeave = () => {
     setDropdownVisible(false);
   };
 
-  const items = [
-    'Menu 1',
-    'Menu 2',
-    'Menu 1',
-    'Menu 1',
-    'Menu 1',
-    'Menu 1',
-    'Menu 1',
-    'Menu 1',
-    'Menu 1',
-  ];
   return (
-    <header className="px-10 pt-6 sticky top-0 left-0 border-b border-b-[#e5e7ed]">
+    <header className="px-10 pt-6 sticky z-20 top-0 left-0 border-b bg-white border-b-[#e5e7ed]">
       <div className="grid grid-cols-[auto_minmax(340px,_600px)_auto] gap-5 items-start h-12">
         <NavBar />
         <div className="relative mt-[-13px] col-span-1">
@@ -123,57 +143,20 @@ const Header = () => {
         </div>
       </div>
       <div>
-        <ul onMouseLeave={handleMouseLeave} className="flex flex-row flex-wrap mt-4">
-          <li className="relative group h-[30px]">
-            <a
-              onMouseEnter={handleMouseEnter}
-              href="/"
-              className="mt-1 mr-3 mb-5 duration-300 group/item"
-            >
-              <span className="text-sm">New In</span>
-            </a>
-          </li>
-          <li>
-            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
-              <span className="text-sm">Clothing</span>
-            </a>
-          </li>
-          <li>
-            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
-              <span className="text-sm">Coats & Jackets</span>
-            </a>
-          </li>
-          <li>
-            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
-              <span className="text-sm">Shoes</span>
-            </a>
-          </li>
-          <li>
-            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
-              <span className="text-sm">Lingerie & Loungewear</span>
-            </a>
-          </li>
-          <li>
-            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
-              <span className="text-sm">Bags</span>
-            </a>
-          </li>
-          <li>
-            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
-              <span className="text-sm">Accessories</span>
-            </a>
-          </li>
-          <li>
-            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
-              <span className="text-sm">Collections</span>
-            </a>
-          </li>
-          <li>
-            <a onMouseEnter={handleMouseEnter} href="/" className="mt-1 mr-3 mb-5 ml-3">
-              <span className="text-sm">Tommy Jeans</span>
-            </a>
-          </li>
-          {isDropdownVisible && <DropdownMenu items={items} />}
+        <ul onMouseLeave={handleMouseLeave} className="flex flex-row flex-wrap mt-4 pb-1">
+          {categoriesData.map(({ category }, index) => (
+            <li key={category}>
+              <a
+                onMouseEnter={handleMouseEnter}
+                href="/"
+                data-category={category}
+                className={`mt-1 mr-3 mb-5 ${index === 0 ? '' : 'ml-3'} hover:text-red-500`}
+              >
+                <span className="text-sm">{category}</span>
+              </a>
+            </li>
+          ))}
+          {isDropdownVisible && <DropdownMenu items={subcategories} />}
         </ul>
       </div>
     </header>
@@ -181,3 +164,15 @@ const Header = () => {
 };
 
 export default Header;
+
+// const categories = [
+//   'New In',
+//   'Clothing',
+//   'Coats & Jackets',
+//   'Shoes',
+//   'Lingerie & Loungewear',
+//   'Bags',
+//   'Accessories',
+//   'Collections',
+//   'Tommy Jeans',
+// ];

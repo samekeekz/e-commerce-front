@@ -1,5 +1,3 @@
-import React from 'react';
-
 const DropdownMenu = ({ items }) => {
   return (
     <div className="absolute z-20 left-0 top-[115px] w-full border-[#000c2d] bg-white px-10 pt-8 pb-6">

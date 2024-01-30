@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import Header from '../sections/Header';
+import { useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import Footer from '../sections/Footer';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const RootLayout = () => {
   const navigate = useNavigate();

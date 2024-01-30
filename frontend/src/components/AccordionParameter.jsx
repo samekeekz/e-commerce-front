@@ -1,6 +1,4 @@
-import React from 'react';
 import '@mantine/core/styles.css';
-import { MantineProvider } from '@mantine/core';
 import { Accordion } from '@mantine/core';
 
 const AccordionParameter = () => {
@@ -51,37 +49,35 @@ const AccordionParameter = () => {
     </Accordion.Item>
   ));
   return (
-    <MantineProvider>
-      <div className="pr-7 pb-7 max-h-[1315px] h-[1200px] overflow-hidden overflow-y-auto">
-        <Accordion
-          defaultValue={['Category']}
-          multiple={true}
-          styles={{
-            label: {
-              fontFamily: 'Futura',
-              fontSize: '16px',
-              lineHeight: '24px',
-              cursor: 'pointer',
-              padding: '16px 0 16px 0',
-            },
-            panel: {
-              fontFamily: 'Futura',
-              fontSize: '14px',
-              lineHeight: '20px',
-            },
-            control: {
-              padding: 0,
-            },
-            content: {
-              paddingLeft: 0,
-              paddingRight: 0,
-            },
-          }}
-        >
-          {items}
-        </Accordion>
-      </div>
-    </MantineProvider>
+    <div className="pr-7 pb-7 max-h-[1315px] h-[1200px] overflow-hidden overflow-y-auto">
+      <Accordion
+        defaultValue={['Category']}
+        multiple={true}
+        styles={{
+          label: {
+            fontFamily: 'Futura',
+            fontSize: '16px',
+            lineHeight: '24px',
+            cursor: 'pointer',
+            padding: '16px 0 16px 0',
+          },
+          panel: {
+            fontFamily: 'Futura',
+            fontSize: '14px',
+            lineHeight: '20px',
+          },
+          control: {
+            padding: 0,
+          },
+          content: {
+            paddingLeft: 0,
+            paddingRight: 0,
+          },
+        }}
+      >
+        {items}
+      </Accordion>
+    </div>
   );
 };
 

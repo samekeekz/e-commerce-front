@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import NavBar from '../components/NavBar';
-import DropdownMenu from '../components/DropdownMenu';
+import { useEffect, useState } from 'react';
+import NavBar from './NavBar';
+import DropdownMenu from './DropdownMenu';
 
 const Header = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);

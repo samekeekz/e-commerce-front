@@ -1,0 +1,38 @@
+.root .indicator {
+  background-color: #969696;
+  width: 5px;
+  height: 5px;
+  margin: 0 2px 0 2px;
+
+  &[data-active] {
+    background-color: #000c2d;
+  }
+}
+
+.root .indicators {
+  bottom: 20px;
+  right: 12px;
+  left: auto;
+  gap: 0;
+  cursor: initial;
+}
+
+.root --_indicators-right {
+  right: 20px;
+}
+.root .control {
+  background-color: white;
+}
+
+.root .controls {
+  transition: opacity 150ms ease;
+  opacity: 0;
+}
+
+.root {
+  &:hover {
+    .controls {
+      opacity: 1;
+    }
+  }
+}

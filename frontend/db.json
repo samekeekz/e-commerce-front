@@ -1,0 +1,253 @@
+{
+  "categoriesmen": [
+    {
+      "id": 1,
+      "name": "New In Men",
+      "slug": "new-in",
+      "subcategories": [
+        { "id": 101, "name": "Subcategory 1.1", "slug": "subcategory-1-1" },
+        { "id": 102, "name": "Subcategory 1.2", "slug": "subcategory-1-2" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Clothing",
+      "slug": "clothing",
+      "subcategories": [
+        { "id": 201, "name": "Polo Shirts", "slug": "polo-shirts" },
+        { "id": 202, "name": "T-Shirts", "slug": "t-shirts" },
+        { "id": 203, "name": "Sweatshirts-Hoodies", "slug": "sweatshirts-hoodies" },
+        { "id": 204, "name": "Blazers", "slug": "blazers" },
+        { "id": 205, "name": "Jeans", "slug": "jeans" },
+        { "id": 206, "name": "Skirts", "slug": "skirts" },
+        { "id": 207, "name": "Trousers", "slug": "trousers" },
+        { "id": 208, "name": "Shirts", "slug": "shirts" },
+        { "id": 209, "name": "Knitwear", "slug": "knitwear" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Bags",
+      "slug": "bags",
+      "subcategories": [
+        { "id": 301, "name": "Subcategory 2.1", "slug": "subcategory-2-1" },
+        { "id": 302, "name": "Subcategory 2.2", "slug": "subcategory-2-2" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Accessories",
+      "slug": "accessories",
+      "subcategories": [
+        { "id": 401, "name": "Subcategory 2.1", "slug": "subcategory-2-1" },
+        { "id": 402, "name": "Subcategory 2.2", "slug": "subcategory-2-2" }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Collections",
+      "slug": "collections",
+      "subcategories": [
+        { "id": 501, "name": "Subcategory 2.1", "slug": "subcategory-2-1" },
+        { "id": 502, "name": "Subcategory 2.2", "slug": "subcategory-2-2" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Tommy Jeans",
+      "slug": "tommy-jeans",
+      "subcategories": [
+        { "id": 601, "name": "Subcategory 2.1", "slug": "subcategory-2-1" },
+        { "id": 602, "name": "Subcategory 2.2", "slug": "subcategory-2-2" }
+      ]
+    }
+  ],
+  "categorieswomen": [
+    {
+      "id": 1,
+      "name": "New In Women",
+      "slug": "new-in",
+      "subcategories": [
+        { "id": 101, "name": "Subcategory 1.1", "slug": "subcategory-1-1" },
+        { "id": 102, "name": "Subcategory 1.2", "slug": "subcategory-1-2" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Clothing",
+      "slug": "clothing",
+      "subcategories": [
+        { "id": 201, "name": "Polo Shirts", "slug": "polo-shirts" },
+        { "id": 202, "name": "T-Shirts", "slug": "t-shirts" },
+        { "id": 203, "name": "Sweatshirts-Hoodies", "slug": "sweatshirts-hoodies" },
+        { "id": 204, "name": "Blazers", "slug": "blazers" },
+        { "id": 205, "name": "Jeans", "slug": "jeans" },
+        { "id": 206, "name": "Skirts", "slug": "skirts" },
+        { "id": 207, "name": "Trousers", "slug": "trousers" },
+        { "id": 208, "name": "Shirts", "slug": "shirts" },
+        { "id": 209, "name": "Knitwear", "slug": "knitwear" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Bags",
+      "slug": "bags",
+      "subcategories": [
+        { "id": 301, "name": "Subcategory 2.1", "slug": "subcategory-2-1" },
+        { "id": 302, "name": "Subcategory 2.2", "slug": "subcategory-2-2" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Accessories",
+      "slug": "accessories",
+      "subcategories": [
+        { "id": 401, "name": "Subcategory 2.1", "slug": "subcategory-2-1" },
+        { "id": 402, "name": "Subcategory 2.2", "slug": "subcategory-2-2" }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Collections",
+      "slug": "collections",
+      "subcategories": [
+        { "id": 501, "name": "Subcategory 2.1", "slug": "subcategory-2-1" },
+        { "id": 502, "name": "Subcategory 2.2", "slug": "subcategory-2-2" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Tommy Jeans",
+      "slug": "tommy-jeans",
+      "subcategories": [
+        { "id": 601, "name": "Subcategory 2.1", "slug": "subcategory-2-1" },
+        { "id": 602, "name": "Subcategory 2.2", "slug": "subcategory-2-2" }
+      ]
+    }
+  ],
+  "categorieskids": [
+    {
+      "id": 1,
+      "name": "New In Kids",
+      "slug": "new-in",
+      "subcategories": [
+        { "id": 101, "name": "Subcategory 1.1", "slug": "subcategory-1-1" },
+        { "id": 102, "name": "Subcategory 1.2", "slug": "subcategory-1-2" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Clothing",
+      "slug": "clothing",
+      "subcategories": [
+        { "id": 201, "name": "Polo Shirts", "slug": "polo-shirts" },
+        { "id": 202, "name": "T-Shirts", "slug": "t-shirts" },
+        { "id": 203, "name": "Sweatshirts-Hoodies", "slug": "sweatshirts-hoodies" },
+        { "id": 204, "name": "Blazers", "slug": "blazers" },
+        { "id": 205, "name": "Jeans", "slug": "jeans" },
+        { "id": 206, "name": "Skirts", "slug": "skirts" },
+        { "id": 207, "name": "Trousers", "slug": "trousers" },
+        { "id": 208, "name": "Shirts", "slug": "shirts" },
+        { "id": 209, "name": "Knitwear", "slug": "knitwear" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Bags",
+      "slug": "bags",
+      "subcategories": [
+        { "id": 301, "name": "Subcategory 2.1", "slug": "subcategory-2-1" },
+        { "id": 302, "name": "Subcategory 2.2", "slug": "subcategory-2-2" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Accessories",
+      "slug": "accessories",
+      "subcategories": [
+        { "id": 401, "name": "Subcategory 2.1", "slug": "subcategory-2-1" },
+        { "id": 402, "name": "Subcategory 2.2", "slug": "subcategory-2-2" }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Collections",
+      "slug": "collections",
+      "subcategories": [
+        { "id": 501, "name": "Subcategory 2.1", "slug": "subcategory-2-1" },
+        { "id": 502, "name": "Subcategory 2.2", "slug": "subcategory-2-2" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Tommy Jeans",
+      "slug": "tommy-jeans",
+      "subcategories": [
+        { "id": 601, "name": "Subcategory 2.1", "slug": "subcategory-2-1" },
+        { "id": 602, "name": "Subcategory 2.2", "slug": "subcategory-2-2" }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "price": 29.99,
+      "discount": 10,
+      "category": "Coats & Jackets",
+      "subcategory": "Subcategory 1.1",
+      "images": ["img1.jpg", "img2.jpg"],
+      "variants": [
+        {
+          "id": 1,
+          "color": "Red",
+          "images": ["img1.jpg", "img2.jpg"],
+          "sizes": [
+            { "size": "XS", "quantity": 10 },
+            { "size": "S", "quantity": 20 },
+            { "size": "M", "quantity": 15 }
+          ]
+        },
+        {
+          "id": 2,
+          "color": "Blue",
+          "sizes": [
+            { "size": "XS", "quantity": 5 },
+            { "size": "S", "quantity": 10 },
+            { "size": "M", "quantity": 8 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "price": 49.99,
+      "discount": 5,
+      "category": "Shoes",
+      "subcategory": "Subcategory 2.1",
+      "images": ["img3.jpg", "img4.jpg"],
+      "variants": [
+        {
+          "id": 1,
+          "color": "Red",
+          "images": ["img1.jpg", "img2.jpg"],
+          "sizes": [
+            { "size": "XS", "quantity": 10 },
+            { "size": "S", "quantity": 20 },
+            { "size": "M", "quantity": 15 }
+          ]
+        },
+        {
+          "id": 2,
+          "color": "Blue",
+          "sizes": [
+            { "size": "XS", "quantity": 5 },
+            { "size": "S", "quantity": 10 },
+            { "size": "M", "quantity": 8 }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,28 +1,18 @@
-import { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import NavBar from './NavBar';
 import DropdownMenu from './DropdownMenu';
+import { useGetCategoriesQuery } from '../store/products/products.api';
+import { IconSearch } from '@tabler/icons-react';
+import useGender from '../hooks/useGender';
 
 const Header = () => {
-  const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const [categoriesData, setCategoriesData] = useState([]);
-  const [subcategories, setSubcategories] = useState([]);
+  const gender = useGender();
+  const { data: categoriesData } = useGetCategoriesQuery(gender);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://653c43ecd5d6790f5ec7e6e3.mockapi.io/products');
-        const data = await response.json();
-        setCategoriesData(data);
-      } catch (error) {
-        console.error('Error fetching categories:', error);
-      }
-    };
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>();
 
-    fetchData();
-  }, []);
-
-  const handleMouseEnter = event => {
-    let category = event.target.dataset.category;
+  const handleMouseEnter = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    let category: string = event.target.dataset.category;
 
     if (!category) {
       const elementWithDataCategory = event.target.closest('[data-category]');
@@ -31,50 +21,33 @@ const Header = () => {
       }
     }
 
-    const subcategoryData = categoriesData.find(data => data.category === category);
-    if (subcategoryData) {
-      setSubcategories(subcategoryData.subcategories);
-      setDropdownVisible(true);
-    }
+    setHoveredCategory(category);
   };
 
   const handleMouseLeave = () => {
-    setDropdownVisible(false);
+    setHoveredCategory(null);
   };
 
   return (
-    <header className="px-10 pt-6 sticky z-20 top-0 left-0 border-b bg-white border-b-[#e5e7ed]">
-      <div className="grid grid-cols-[auto_minmax(340px,_600px)_auto] gap-5 items-start h-12">
+    <header className="sticky left-0 top-0 z-20 border-b border-b-[#e5e7ed] bg-white px-10 pb-1 pt-6">
+      <div className="grid h-12 grid-cols-[auto_minmax(340px,_600px)_auto] items-start gap-5">
         <NavBar />
-        <div className="relative mt-[-13px] col-span-1">
-          <form className="flex items-center border-[#e5e5e5] border-[1px] py-3 pl-10 pr-14">
+        <div className="relative col-span-1 mt-[-13px]">
+          <form className="flex items-center border-[1px] border-[#e5e5e5] py-3 pl-10 pr-14">
             <div className="absolute left-[0.75rem]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="w-5 h-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                />
-              </svg>
+              <IconSearch stroke={1.5} size={20} />
             </div>
             <input
               type="text"
               placeholder="Search"
-              className="max-w-[600px] min-w-[340px] w-full bg-transparent placeholder:text-sm placeholder:text-[#5a5c66] placeholder:leading-[14px] focus-visible:outline-0 focus-visible:border-[#e5e5e5] transition-all duration-200 ease-linear	text-[#000c2d] leading-5"
+              className="w-full min-w-[340px] max-w-[600px] bg-transparent leading-5 text-[#000c2d] transition-all duration-200 ease-linear placeholder:text-sm placeholder:leading-[14px] placeholder:text-[#5a5c66]	focus-visible:border-[#e5e5e5] focus-visible:outline-0"
             />
           </form>
         </div>
-        <div className="flex items-center gap-x-5 col-auto justify-self-end">
+        <div className="col-auto flex items-center gap-x-5 justify-self-end">
           <div className="flex items-center">
             <svg
-              className="text-[20px] mr-[10px]"
+              className="mr-[10px] text-[20px]"
               data-testid="icon-utility-user-svg"
               width="20px"
               height="20px"
@@ -141,20 +114,27 @@ const Header = () => {
         </div>
       </div>
       <div>
-        <ul onMouseLeave={handleMouseLeave} className="flex flex-row flex-wrap mt-4 pb-1">
-          {categoriesData.map(({ category }, index) => (
-            <li key={category}>
-              <a
-                onMouseEnter={handleMouseEnter}
-                href="/"
-                data-category={category}
-                className={`mt-1 mr-3 mb-5 ${index === 0 ? '' : 'ml-3'} hover:text-red-500`}
-              >
-                <span className="text-sm">{category}</span>
-              </a>
-            </li>
-          ))}
-          {isDropdownVisible && <DropdownMenu items={subcategories} />}
+        <ul onMouseLeave={handleMouseLeave} className="mt-4 flex flex-row flex-wrap pb-1">
+          {categoriesData &&
+            categoriesData.map(({ name }, index) => (
+              <li key={name}>
+                <a
+                  onMouseEnter={handleMouseEnter}
+                  href="/"
+                  data-category={name}
+                  className={`pr-3 pt-1 ${index === 0 ? '' : 'pl-3'} hover:text-red-500`}
+                >
+                  <span className="text-sm">{name}</span>
+                </a>
+              </li>
+            ))}
+          {hoveredCategory && (
+            <DropdownMenu
+              items={
+                categoriesData?.find(data => data.name === hoveredCategory)?.subcategories || []
+              }
+            />
+          )}
         </ul>
       </div>
     </header>
@@ -162,15 +142,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// const categories = [
-//   'New In',
-//   'Clothing',
-//   'Coats & Jackets',
-//   'Shoes',
-//   'Lingerie & Loungewear',
-//   'Bags',
-//   'Accessories',
-//   'Collections',
-//   'Tommy Jeans',
-// ];

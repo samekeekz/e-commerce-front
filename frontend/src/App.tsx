@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import CategoryPage from './pages/CategoryPage';
 import { RootLayout } from './layouts/RootLayout';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             path="/:page/category/:categoryName/subcategory/:subcategoryName/:productName"
             element={<h1>Product Page</h1>}
           />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </>

@@ -12,7 +12,7 @@ const Header = () => {
       try {
         const response = await fetch('https://653c43ecd5d6790f5ec7e6e3.mockapi.io/products');
         const data = await response.json();
-        setCategoriesData(data); // Assuming the API returns an array of categories with their subcategories
+        setCategoriesData(data);
       } catch (error) {
         console.error('Error fetching categories:', error);
       }
@@ -20,8 +20,6 @@ const Header = () => {
 
     fetchData();
   }, []);
-
-  // console.log(1);
 
   const handleMouseEnter = event => {
     let category = event.target.dataset.category;

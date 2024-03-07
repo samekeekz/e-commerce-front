@@ -1,17 +1,17 @@
-export interface ICategory {
+export type Category = {
   id: number;
   name: string;
   slug: string;
-  subcategories: ISubcategory[];
-}
+  subcategories: Subcategory[];
+};
 
-export interface ISubcategory {
+export type Subcategory = {
   id: number;
   name: string;
   slug: string;
-}
+};
 
-export interface IProduct {
+export type Product = {
   id: number;
   name: string;
   price: number;
@@ -19,17 +19,17 @@ export interface IProduct {
   category: string;
   subcategory: string;
   images: string[];
-  variants: IVariant[];
-}
+  variants: Variant[];
+};
 
-export interface IVariant {
+export type Variant = {
   id: number;
   color: string;
   images?: string[];
-  sizes: ISize[];
-}
+  sizes: Size[];
+};
 
-export interface ISize {
+export type Size = {
   size: string;
   quantity: number;
-}
+};

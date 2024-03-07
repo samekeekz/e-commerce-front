@@ -4,6 +4,7 @@ import DropdownMenu from './DropdownMenu';
 import { useGetCategoriesQuery } from '../store/products/products.api';
 import { IconSearch } from '@tabler/icons-react';
 import useGender from '../hooks/useGender';
+import { useLocation } from 'react-router-dom';
 
 const Header = () => {
   const gender = useGender();
@@ -27,6 +28,12 @@ const Header = () => {
   const handleMouseLeave = () => {
     setHoveredCategory(null);
   };
+
+  function isCategoryActive(categoryName: string) {
+    const location = useLocation();
+    const pathSegments = location.pathname.split('/');
+    return pathSegments.includes(categoryName);
+  }
 
   return (
     <header className="sticky left-0 top-0 z-20 border-b border-b-[#e5e7ed] bg-white px-10 pb-1 pt-6">
@@ -116,13 +123,13 @@ const Header = () => {
       <div>
         <ul onMouseLeave={handleMouseLeave} className="mt-4 flex flex-row flex-wrap pb-1">
           {categoriesData &&
-            categoriesData.map(({ name }, index) => (
+            categoriesData.map(({ name, slug }, index) => (
               <li key={name}>
                 <a
                   onMouseEnter={handleMouseEnter}
                   href="/"
                   data-category={name}
-                  className={`pr-3 pt-1 ${index === 0 ? '' : 'pl-3'} hover:text-red-500`}
+                  className={`pr-3 pt-1 ${index === 0 ? '' : 'pl-3'} hover:text-red-500 ${isCategoryActive(slug) ? 'font-bold' : ''}`}
                 >
                   <span className="text-sm">{name}</span>
                 </a>

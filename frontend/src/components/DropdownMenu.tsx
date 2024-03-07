@@ -1,6 +1,6 @@
-import { ISubcategory } from '../types';
+import { Subcategory } from '../types';
 
-const DropdownMenu = ({ items }: { items: ISubcategory[] }) => {
+const DropdownMenu = ({ items }: { items: Subcategory[] }) => {
   return (
     <div className="absolute left-0 top-[115px] z-20 w-full border-[#000c2d] bg-white px-10 pb-6 pt-8">
       <h3 className="pb-[6px] text-[13px] font-bold leading-5">SHOP BY CATEGORY</h3>

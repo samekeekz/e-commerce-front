@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {

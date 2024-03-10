@@ -1,5 +1,6 @@
 import ProductCarousel from './ProductCarousel/ProductCarousel';
 import { Product } from '../types';
+import { useAddWishlistMutation } from '../store/wishlist/wishlist.api';
 
 const ProductCard = ({
   id,
@@ -11,6 +12,7 @@ const ProductCard = ({
   images,
   variants,
 }: Product) => {
+  const [addWishlist, result] = useAddWishlistMutation();
   return (
     <li className="relative col-span-4">
       <a href="#">
@@ -20,9 +22,12 @@ const ProductCard = ({
           </div>
           <div className="mb-3 px-3">
             <h4 className="mb-1 text-sm text-[#000c2d]">{name}</h4>
-            <span className="text-[13px] font-bold text-[#000c2d]">£{price}</span>
+            <span className="text-[13px] font-extrabold text-[#000c2d]">€{price}</span>
           </div>
-          <button className="absolute right-3 top-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white">
+          <button
+            className="absolute right-3 top-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white"
+            onClick={() => addWishlist(id)}
+          >
             <svg
               className=""
               data-testid="icon-utility-wishlist-svg"

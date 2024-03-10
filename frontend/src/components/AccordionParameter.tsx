@@ -9,15 +9,15 @@ const AccordionParameter = () => {
     },
     {
       value: 'Colour',
-      checkboxes: ['Coats & Jackets', 'Knitwear', 'Shoes', 'Costume'],
+      checkboxes: ['Black', 'Blue', 'Shoes', 'Costume'],
     },
     {
       value: 'Material',
-      checkboxes: ['Coats & Jackets', 'Knitwear', 'Shoes', 'Costume'],
+      checkboxes: ['Linen', 'Cotton', 'Organic Materials', 'Recycled Materials'],
     },
     {
       value: 'Label',
-      checkboxes: ['Coats & Jackets', 'Knitwear', 'Shoes', 'Costume'],
+      checkboxes: ['TOMMY HILFIGER', 'TOMMY JEANS'],
     },
     {
       value: 'Price',
@@ -25,7 +25,7 @@ const AccordionParameter = () => {
     },
     {
       value: 'Size',
-      checkboxes: ['Coats & Jackets', 'Knitwear', 'Shoes', 'Costume'],
+      checkboxes: ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL', '4XL', '5XL'],
     },
   ];
 
@@ -49,7 +49,7 @@ const AccordionParameter = () => {
     </Accordion.Item>
   ));
   return (
-    <div className="pr-7 pb-7 max-h-[1315px] h-[1200px] overflow-hidden overflow-y-auto">
+    <div className="h-[1200px] max-h-[1315px] overflow-hidden overflow-y-auto pb-7 pr-7">
       <Accordion
         defaultValue={['Category']}
         multiple={true}
@@ -57,6 +57,7 @@ const AccordionParameter = () => {
           label: {
             fontFamily: 'Futura',
             fontSize: '16px',
+            fontWeight: 400,
             lineHeight: '24px',
             cursor: 'pointer',
             padding: '16px 0 16px 0',

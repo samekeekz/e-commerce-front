@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import NavBar from './NavBar';
 import DropdownMenu from './DropdownMenu';
-import { useGetCategoriesQuery } from '../store/products/products.api';
 import { IconSearch } from '@tabler/icons-react';
 import useGender from '../hooks/useGender';
 import { useLocation } from 'react-router-dom';
+import { useGetCategoriesQuery } from '../store/categories/categories.api';
 
 const Header = () => {
+  const location = useLocation();
   const gender = useGender();
   const { data: categoriesData } = useGetCategoriesQuery(gender);
 
   const [hoveredCategory, setHoveredCategory] = useState<string | null>();
 
   const handleMouseEnter = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    let category: string = event.target.dataset.category;
+    let category: string = (event.target as HTMLElement).dataset.category ?? '';
 
     if (!category) {
-      const elementWithDataCategory = event.target.closest('[data-category]');
+      const elementWithDataCategory = (event.target as HTMLElement).closest('[data-category]');
       if (elementWithDataCategory) {
-        category = elementWithDataCategory.dataset.category;
+        category = (elementWithDataCategory as HTMLElement).dataset.category ?? '';
       }
     }
 
@@ -30,13 +31,12 @@ const Header = () => {
   };
 
   function isCategoryActive(categoryName: string) {
-    const location = useLocation();
     const pathSegments = location.pathname.split('/');
     return pathSegments.includes(categoryName);
   }
 
   return (
-    <header className="sticky left-0 top-0 z-20 border-b border-b-[#e5e7ed] bg-white px-10 pb-1 pt-6">
+    <header className="sticky left-0 top-0 z-20 border-b border-b-[#e5e7ed] bg-white pb-1 pt-6">
       <div className="grid h-12 grid-cols-[auto_minmax(340px,_600px)_auto] items-start gap-5">
         <NavBar />
         <div className="relative col-span-1 mt-[-13px]">
@@ -79,7 +79,7 @@ const Header = () => {
           </div>
           <div className="flex items-center gap-x-5">
             <svg
-              className="text-[20px]"
+              className="cursor-pointer text-[20px]"
               data-testid="icon-utility-wishlist-svg"
               width="1em"
               height="1em"
@@ -96,7 +96,7 @@ const Header = () => {
               ></path>
             </svg>
             <svg
-              className="text-[20px]"
+              className="cursor-pointer text-[20px]"
               data-testid="icon-utility-basket-svg"
               width="1em"
               height="1em"

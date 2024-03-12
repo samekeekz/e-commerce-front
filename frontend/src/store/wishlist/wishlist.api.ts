@@ -14,16 +14,16 @@ export const wishlistApi = createApi({
       }),
       providesTags: ['Wishlist'],
     }),
-    addWishlist: build.mutation<void, number>({
-      query: (id: number) => ({
+    addWishlist: build.mutation<Product, Partial<Product>>({
+      query: body => ({
         url: 'wishlist',
         method: 'POST',
-        body: { id },
+        body,
       }),
       invalidatesTags: ['Wishlist'],
     }),
     removeWishlist: build.mutation<void, number>({
-      query: (id: number) => ({
+      query: id => ({
         url: 'wishlist',
         method: 'DELETE',
         body: { id },

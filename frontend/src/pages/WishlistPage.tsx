@@ -20,11 +20,24 @@ const WishlistPage = () => {
               Sign In / Register
             </div>
           </Link>
-          {data?.map(product => (
-            <div key={product.id}>
-              <h2>{product.id}</h2>
-            </div>
-          ))}
+          <ul className="grid grid-cols-5 gap-x-2 gap-y-10">
+            {data?.map(product => (
+              <li key={product.id} className="">
+                <Link to={`/${product.name}`} className="block">
+                  <div className="">
+                    <img className="w-full" src={product.images[0]} alt="image" />
+                  </div>
+                  <div className="mb-3 px-3">
+                    <p>{product.name}</p>
+                    <p>{product.price}</p>
+                  </div>
+                </Link>
+                <div className="mx-2">
+                  <button>Add to Bag</button>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center px-8 py-[72px]">

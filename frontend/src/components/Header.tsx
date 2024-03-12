@@ -3,7 +3,7 @@ import NavBar from './NavBar';
 import DropdownMenu from './DropdownMenu';
 import { IconSearch } from '@tabler/icons-react';
 import useGender from '../hooks/useGender';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useGetCategoriesQuery } from '../store/categories/categories.api';
 
 const Header = () => {
@@ -78,23 +78,25 @@ const Header = () => {
             <button className="text-sm text-[#000c2d]">Sign In / Register</button>
           </div>
           <div className="flex items-center gap-x-5">
-            <svg
-              className="cursor-pointer text-[20px]"
-              data-testid="icon-utility-wishlist-svg"
-              width="1em"
-              height="1em"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M10.4481 4.09582C10.2734 4.34393 10.1248 4.5927 10 4.8268C9.87523 4.5927 9.72666 4.34393 9.55193 4.09582C8.87862 3.1397 7.67786 2 5.78125 2C4.43273 2 3.2011 2.55821 2.31326 3.57178C1.46642 4.53865 1 5.83357 1 7.21798C1 8.72496 1.58475 10.1266 2.84025 11.6289C3.96234 12.9717 5.57661 14.3557 7.4459 15.9584C8.14245 16.5557 8.86277 17.1733 9.62963 17.8484C9.75208 17.9562 9.87604 18 10 18C10.124 18 10.2479 17.9562 10.3473 17.8687C11.1372 17.1733 11.8576 16.5557 12.5542 15.9584C14.4234 14.3558 16.0377 12.9717 17.1597 11.6289C18.4152 10.1266 19 8.72496 19 7.21798C19 5.83357 18.5336 4.53865 17.6867 3.57174C16.7989 2.55818 15.5673 2 14.2188 2C12.3221 2 11.1214 3.1397 10.4481 4.09582Z"
-                stroke="#00174F"
-                strokeWidth="1.2"
-              ></path>
-            </svg>
+            <Link to="/wishlist">
+              <svg
+                className="cursor-pointer text-[20px]"
+                data-testid="icon-utility-wishlist-svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M10.4481 4.09582C10.2734 4.34393 10.1248 4.5927 10 4.8268C9.87523 4.5927 9.72666 4.34393 9.55193 4.09582C8.87862 3.1397 7.67786 2 5.78125 2C4.43273 2 3.2011 2.55821 2.31326 3.57178C1.46642 4.53865 1 5.83357 1 7.21798C1 8.72496 1.58475 10.1266 2.84025 11.6289C3.96234 12.9717 5.57661 14.3557 7.4459 15.9584C8.14245 16.5557 8.86277 17.1733 9.62963 17.8484C9.75208 17.9562 9.87604 18 10 18C10.124 18 10.2479 17.9562 10.3473 17.8687C11.1372 17.1733 11.8576 16.5557 12.5542 15.9584C14.4234 14.3558 16.0377 12.9717 17.1597 11.6289C18.4152 10.1266 19 8.72496 19 7.21798C19 5.83357 18.5336 4.53865 17.6867 3.57174C16.7989 2.55818 15.5673 2 14.2188 2C12.3221 2 11.1214 3.1397 10.4481 4.09582Z"
+                  stroke="#00174F"
+                  strokeWidth="1.2"
+                ></path>
+              </svg>
+            </Link>
             <svg
               className="cursor-pointer text-[20px]"
               data-testid="icon-utility-basket-svg"

@@ -13,6 +13,14 @@ const ProductCard = ({
   variants,
 }: Product) => {
   const [addWishlist, result] = useAddWishlistMutation();
+
+  const handleContainerClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (!(event.target as HTMLElement).classList.contains('mantine-Carousel-control')) {
+      // Only trigger link action if the clicked element is not a carousel control button
+      event.preventDefault();
+    }
+  };
+
   return (
     <li className="relative col-span-4">
       <a href="#">
@@ -26,7 +34,7 @@ const ProductCard = ({
           </div>
           <button
             className="absolute right-3 top-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white"
-            onClick={() => addWishlist(id)}
+            onClick={() => addWishlist({ id, name, price, discount, images })}
           >
             <svg
               className=""

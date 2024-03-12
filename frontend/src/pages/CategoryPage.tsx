@@ -1,14 +1,13 @@
 import { useParams } from 'react-router-dom';
 import AccordionParameter from '../components/AccordionParameter';
 import ProductCard from '../components/ProductCard';
-import { useGetProductsByCategoryQuery, useGetProductsQuery } from '../store/products/products.api';
+import { useGetProductsByCategoryQuery } from '../store/products/products.api';
 
 const CategoryPage = () => {
   const { categoryName } = useParams();
   const { data: products, isLoading } = useGetProductsByCategoryQuery(categoryName || 'clothing');
-
   return (
-    <div className="mx-10 mt-20">
+    <div className="mt-20">
       <div className="mb-5 flex justify-between">
         <h1 className="font-Futura text-[34px] font-bold uppercase leading-10 text-[#000c2d]">
           Clothing

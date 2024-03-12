@@ -15,12 +15,24 @@ export const productsApi = createApi({
       providesTags: ['Products'],
     }),
     getProductsByCategory: build.query<Product[], string>({
-      query: (category: string) => ({
+      query: category => ({
         url: 'category' + category,
       }),
       providesTags: ['Products'],
     }),
+    getProductsWithFilters: build.query<Product[], object>({
+      query: filters => {
+        return {
+          url: 'products',
+          params: filters,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetProductsQuery, useGetProductsByCategoryQuery } = productsApi;
+export const {
+  useGetProductsQuery,
+  useGetProductsByCategoryQuery,
+  useGetProductsWithFiltersQuery,
+} = productsApi;

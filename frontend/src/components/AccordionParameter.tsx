@@ -1,8 +1,55 @@
 import '@mantine/core/styles.css';
 import { Accordion } from '@mantine/core';
+import { useSearchParams } from 'react-router-dom';
+import { useGetProductsWithFiltersQuery } from '../store/products/products.api';
 
 const AccordionParameter = () => {
+  let [searchParams, setSearchParams] = useSearchParams();
+
+  const filters: { [key: string]: string[] } = Object.fromEntries(
+    [...searchParams.entries()].reduce((acc: [PropertyKey, string[]][], [key, value]) => {
+      if (acc.some(([k]) => k === key)) {
+        const index = acc.findIndex(([k]) => k === key);
+        acc[index][1].push(value);
+      } else {
+        acc.push([key, [value]]);
+      }
+      return acc;
+    }, []),
+  );
+
+  const { data } = useGetProductsWithFiltersQuery(filters);
+
+  // console.log(filters);
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, checked } = e.target;
+    const currentParams = new URLSearchParams(searchParams);
+
+    if (checked) {
+      currentParams.append(name.toLowerCase(), value);
+    } else {
+      const values = currentParams.getAll(name.toLowerCase());
+      const updatedValues = values.filter(val => val !== value);
+
+      currentParams.delete(name.toLowerCase());
+      updatedValues.forEach(val => currentParams.append(name.toLowerCase(), val));
+    }
+
+    setSearchParams(currentParams.toString());
+  };
+
   const groceries = [
+    {
+      value: 'Sort By',
+      checkboxes: [
+        'Recommended',
+        'Best sellers',
+        'New arrivals',
+        'Price: High to Low',
+        'Price: Low to High',
+      ],
+    },
     {
       value: 'Category',
       checkboxes: ['Coats & Jackets', 'Knitwear', 'Shoes', 'Costume'],
@@ -38,7 +85,13 @@ const AccordionParameter = () => {
             {item.checkboxes.map((checkbox, index) => (
               <li key={index} className={`py-2 ${index === 0 ? 'pt-0' : ''}`}>
                 <label className="cursor-pointer">
-                  <input className="mr-2 cursor-pointer" type="checkbox" name={item.value} />
+                  <input
+                    className="mr-2 cursor-pointer"
+                    type="checkbox"
+                    name={item.value}
+                    value={checkbox}
+                    onChange={handleCheckboxChange}
+                  />
                   <span>{checkbox}</span>
                 </label>
               </li>
